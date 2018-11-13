@@ -233,7 +233,9 @@ public class GraphImplement implements Graph
                 s.append(NEWLINE);
             }
         }
-        
+        if(V==0&&E==0) {
+        	s.append("No edges");
+        }
         return s.toString();
     }
 
