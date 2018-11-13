@@ -37,10 +37,12 @@ public class Solution {
 		String line0 = sc.nextLine();
 		String line1 = sc.nextLine();
 		String line2 = sc.nextLine();
-		int ver = Integer.parseInt(line1);
-		Matrix m =new Matrix(ver);
+		int ver1 = Integer.parseInt(line1);
+		int ver2 = Integer.parseInt(line2);
+		Matrix m =new Matrix(ver1);
 		String place= sc.nextLine();
 		String []ary= place.split(",");
+		System.out.println(ver1+" vertices, "+ver2+" edges");
 		while(sc.hasNext())
 		{
 			String verx = sc.nextLine();
@@ -50,7 +52,7 @@ public class Solution {
 			//System.out.println("i1 : "+i1+" i2 : "+i2);
 			m.connect(i1,i2);
 		}
-		m.display(ver);
+		m.display(ver1);
 	}
 
 }
