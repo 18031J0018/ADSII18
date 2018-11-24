@@ -43,7 +43,7 @@ class Graph
 class AllPairs
 {
 	Graph g;
-	int []path =new int[g.v];
+	//int []path =new int[g.v];
 	public double min(double a,double b)
 	{
 		if(a<b) return a;
@@ -58,8 +58,8 @@ class AllPairs
 				for(int j=0;j<v;j++)
 				{
 					g.matrix[i][j]=min(g.matrix[i][j],g.matrix[i][k]+g.matrix[k][j]);
-					if(g.matrix[i][k]+g.matrix[k][j]==g.matrix[i][j])
-						path[j]=k;
+					//if(g.matrix[i][k]+g.matrix[k][j]==g.matrix[i][j])
+						//path[j]=k;
 				}
 			}
 		}
@@ -94,7 +94,7 @@ public class Solution {
 			{
 				//0: 0-7 221.00000  0-4 78.00000
 				System.out.print(i+": ");
-				for(int j=gp.v-1;j>=0;j--)
+				for(int j=gp.v-1;j>0;j--)
 				{
 					if(gp.matrix[i][j]<Float.MAX_VALUE && gp.matrix[i][j]!=0)
 					{
@@ -112,6 +112,17 @@ public class Solution {
 			// Other wise print "No Path Found."
 			AllPairs ap =new AllPairs();
 			ap.ShortestPath(gp, gp.v);
+			String line3 = sc.nextLine();
+			String []uv1 = line3.split(" ");
+			int l = Integer.parseInt(uv1[0]),m=Integer.parseInt(uv1[1]);
+			if(gp.matrix[l][m]<Float.MAX_VALUE && gp.matrix[l][m]!=0)
+			{
+				System.out.println(gp.matrix[l][m]);
+			}
+			else
+			{
+				System.out.println("No Path Found.");
+			}
 			break;
 
 		case "ViaPaths":
