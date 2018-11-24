@@ -80,12 +80,12 @@ public class Solution {
 			for(int i=0;i<gp.v;i++)
 			{
 				//0: 0-7 221.00000  0-4 78.00000
-				System.out.print(i+":");
-				for(int j=0;j<gp.v;j++)
+				System.out.print(i+": ");
+				for(int j=gp.v-1;j>0;j--)
 				{
-					if(gp.matrix[i][j]<Float.MAX_VALUE)
+					if(gp.matrix[i][j]<Float.MAX_VALUE && gp.matrix[i][j]!=0)
 					{
-						System.out.print(i+"-"+j+" "+gp.matrix[i][j]);
+						System.out.print(i+"-"+j+" "+gp.matrix[i][j]+" ");
 					}
 				}
 				System.out.println();
