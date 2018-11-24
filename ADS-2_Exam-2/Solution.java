@@ -94,7 +94,7 @@ public class Solution {
 			{
 				//0: 0-7 221.00000  0-4 78.00000
 				System.out.print(i+": ");
-				for(int j=gp.v-1;j>0;j--)
+				for(int j=gp.v-1;j>=0;j--)
 				{
 					if(gp.matrix[i][j]<Float.MAX_VALUE && gp.matrix[i][j]!=0)
 					{
