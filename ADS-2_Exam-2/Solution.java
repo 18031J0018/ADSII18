@@ -43,7 +43,7 @@ class Graph
 class AllPairs
 {
 	Graph g;
-	int []path =new int[g.v];
+	//int []path =new int[g.v];
 	public double min(double a,double b)
 	{
 		if(a<b) return a;
@@ -58,11 +58,8 @@ class AllPairs
 				for(int j=0;j<v;j++)
 				{
 					g.matrix[i][j]=min(g.matrix[i][j],g.matrix[i][k]+g.matrix[k][j]);
-					if(i>0 &&j>0)
-					{
-					if(g.matrix[i][k]+g.matrix[k][j]==g.matrix[i][j] && g.matrix[i][j]!=g.matrix[i-1][j-1])
-						path[j]=k;
-					}
+					//if(g.matrix[i][k]+g.matrix[k][j]==g.matrix[i][j])
+						//path[j]=k;
 				}
 			}
 		}
@@ -83,7 +80,7 @@ public class Solution {
 			String []uvw = line1.split(" ");
 			int u=Integer.parseInt(uvw[0]),v=Integer.parseInt(uvw[1]);
 			float w = Float.parseFloat(uvw[2]);
-			gp.addEdge(v, u, w);
+			gp.addEdge(u, v, w);
 		}
 		String caseToGo=sc.nextLine();
 		//String  = null;
@@ -97,7 +94,7 @@ public class Solution {
 			{
 				//0: 0-7 221.00000  0-4 78.00000
 				System.out.print(i+": ");
-				for(int j=gp.v-1;j>=0;j--)
+				for(int j=gp.v-1;j>0;j--)
 				{
 					if(gp.matrix[i][j]<Float.MAX_VALUE && gp.matrix[i][j]!=0)
 					{
@@ -134,22 +131,6 @@ public class Solution {
 			// third is the destination.
 			// If the path exists print the distance between them.
 			// Other wise print "No Path Found."
-			AllPairs ap1 =new AllPairs();
-			ap1.ShortestPath(gp, gp.v);
-			String line4 = sc.nextLine();
-			String []uv2 = line4.split(" ");
-			int l1 = Integer.parseInt(uv2[0]),m1=Integer.parseInt(uv2[1]);
-			if(gp.matrix[l1][m1]<Float.MAX_VALUE && gp.matrix[l1][m1]!=0)
-			{
-				for(int i=0;i<gp.v;i++)
-				{
-					System.out.print(ap1.path[i]+" ");
-				}
-			}
-			else
-			{
-				System.out.println("No Path Found.");
-			}
 			break;
 
 		default:
