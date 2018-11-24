@@ -1,14 +1,15 @@
 
+import java.text.DecimalFormat;
 import java.util.Scanner;
 
 class Graph
 {
 	int v;
-	float [][]matrix;
+	double [][]matrix;
 	public Graph(int v)
 	{
 		this.v=v;
-		matrix = new float[v][v];
+		matrix = new double[v][v];
 		for(int i=0;i<v;i++)
 		{
 			for(int j=0;j<v;j++)
@@ -19,12 +20,12 @@ class Graph
 				}
 				else
 				{
-					matrix[i][j]=Float.MAX_VALUE;
+					matrix[i][j]=Double.MAX_VALUE;
 				}
 			}
 		}
 	}
-	public void addEdge(int u,int v,float weight)
+	public void addEdge(int u,int v,double weight)
 	{
 		matrix[u][v]=matrix[v][u]=weight;
 	}
@@ -43,7 +44,7 @@ class AllPairs
 {
 	Graph g;
 	int []path =new int[g.v];
-	public float min(float a,float b)
+	public double min(double a,double b)
 	{
 		if(a<b) return a;
 		else return b;
@@ -77,7 +78,8 @@ public class Solution {
 		{
 			String line1 = sc.nextLine();
 			String []uvw = line1.split(" ");
-			int u=Integer.parseInt(uvw[0]),v=Integer.parseInt(uvw[1]),w=Integer.parseInt(uvw[2]);
+			int u=Integer.parseInt(uvw[0]),v=Integer.parseInt(uvw[1]);
+			float w = Float.parseFloat(uvw[2]);
 			gp.addEdge(u, v, w);
 		}
 		String caseToGo=sc.nextLine();
@@ -86,6 +88,7 @@ public class Solution {
 		case "Graph":
 			//Print the Graph Object.
 			//10 vertices 11 edges
+			DecimalFormat df = new DecimalFormat("0.00000");
 			System.out.println(vertices+" vertices "+edges+" edges");
 			for(int i=0;i<gp.v;i++)
 			{
@@ -95,7 +98,7 @@ public class Solution {
 				{
 					if(gp.matrix[i][j]<Float.MAX_VALUE && gp.matrix[i][j]!=0)
 					{
-						System.out.print(gp.min(i, j)+"-"+gp.max(i, j)+" "+gp.matrix[i][j]+" ");
+						System.out.print(i+"-"+j+" "+df.format(gp.matrix[i][j])+" ");
 					}
 				}
 				System.out.println();
