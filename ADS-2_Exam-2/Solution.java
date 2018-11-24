@@ -28,6 +28,16 @@ class Graph
 	{
 		matrix[u][v]=matrix[v][u]=weight;
 	}
+	public int min(int i,int j)
+	{
+		if(i<j) return i;
+		else return j;
+	}
+	public int max(int i,int j)
+	{
+		if(i>j) return i;
+		else return j;
+	}
 }
 class AllPairs
 {
@@ -85,7 +95,7 @@ public class Solution {
 				{
 					if(gp.matrix[i][j]<Float.MAX_VALUE && gp.matrix[i][j]!=0)
 					{
-						System.out.print(i+"-"+j+" "+gp.matrix[i][j]+" ");
+						System.out.print(gp.min(i, j)+"-"+gp.max(i, j)+" "+gp.matrix[i][j]+" ");
 					}
 				}
 				System.out.println();
